@@ -3,23 +3,39 @@
     <head>
         <meta charset="utf-8">
         <title>d3.js Dynamic HMTML page</title>
+        <style>
+            body {background-color: rgb(241, 219, 145);}
+           .special {color: rgb(245, 43, 8)}
+           .operator {font-weight: bold;}
+           #result {border: solid 1pt;
+           border-color: gray}
+        </style>
         <script src="https://d3js.org/d3.v6.min.js"></script>
     </head>
 
     <body>
-        <div id="searchText">
-        <input id="searchInput" type="text">
-        <p></p>
-        </div>
-        <button>  
-        </button> 
+        <div align="center" class="special">
+            <h2>
+                <p style="color:rgb(24, 18, 18)"> 
+                Juan Miguel Rodríguez Lago <br>
+                Data Tyding and Reporting 
+                </p>
+            </h2>
+                <p style="color:rgb(12, 10, 10)"> Master Course in Statistics for Data Science </p>
+                <p style="color:black"> 15/02/2021 </p>
+            <br><br>
+        
+        </div> 
+        <input id="searchInput" type="text">    
+        <p style="color: blue;">Bind some text</p>
+        <button></button>
         <script>
-            d3.selectAll("p").node().value
-            .append("p").text(function(d) { return d; });
-
-            function colorP() {
-                d3.selectAll("p").style("color", "red");
-            }
+            var MyText = d3.select("#searchResults").html(this.value);
+            var p = d3.select("body")
+            .selectAll("p")
+            .data(MyText)
+            .text(function(d) { return d; });
+        
         </script>
         
         
