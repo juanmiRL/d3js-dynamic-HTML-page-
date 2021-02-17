@@ -12,28 +12,31 @@
     </head>
 
     <body>
-        <div align="center" class="special">
-            <h2>
-                <p style="color:rgb(24, 18, 18)"> 
-                Juan Miguel Rodríguez Lago <br>
-                Data Tyding and Reporting 
-                </p>
-            </h2>
-                <p style="color:rgb(12, 10, 10)"> Master Course in Statistics for Data Science </p>
-                <p style="color:black"> 15/02/2021 </p>
-            <br><br>
         
-        </div> 
-        <input id="searchInput" type="text">    
-        <p style="color: blue;">Bind some text</p>
-        <button></button>
+        <input id="myInput" type="text"></input>    
+        <p></p>
+        <button style="color: black;" onclick="addtext()">Click to add the input text</button>
+        <button style="color: red;" onclick="colorRed()">Click to change the color in red</button>
+        <button style="color: blue;"onclick="colorBlue()">Click to change the color in blue</button>
         <script>
-            var MyText = d3.select("#searchResults").html(this.value);
-            var p = d3.select("body")
-            .selectAll("p")
-            .data(MyText)
-            .text(function(d) { return d; });
-        
+            var myInput 
+            d3.select("input").on("change", function(){
+            myInput = this.value
+            })
+            
+            function addtext(){
+                d3.select("p")
+                .append("p")
+                .text(myInput);
+            }
+            
+            
+            function colorRed() {
+                d3.selectAll("p").style("color", "red");
+            }
+            function colorBlue() {
+                d3.selectAll("p").style("color", "blue");
+            }
         </script>
         
         
